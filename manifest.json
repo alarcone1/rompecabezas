@@ -1,0 +1,21 @@
+{
+    "name": "Rompecabezas",
+    "short_name": "Puzzle",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#F5F3FF",
+    "theme_color": "#6366F1",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "https://cdn-icons-png.flaticon.com/512/993/993762.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "https://cdn-icons-png.flaticon.com/512/993/993762.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
