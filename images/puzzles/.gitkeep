@@ -1,0 +1,24 @@
+# Esta carpeta contendrá las imágenes para los rompecabezas
+
+## Estructura recomendada:
+
+```
+images/puzzles/
+├── sample-image-1.jpg    # Imagen de ejemplo 1
+├── sample-image-2.jpg    # Imagen de ejemplo 2  
+├── sample-image-3.jpg    # Imagen de ejemplo 3
+└── user-uploads/         # Carpeta para imágenes subidas por usuarios
+```
+
+## Especificaciones de imágenes:
+
+- **Aspecto ratio**: 9:16 (vertical)
+- **Tamaño recomendado**: 270x480px o múltiplos
+- **Formato**: JPG, PNG, WebP
+- **Peso máximo**: 500KB por imagen
+
+## Nombrado de archivos:
+
+- Usar nombres descriptivos sin espacios
+- Usar guiones (-) en lugar de espacios
+- Ejemplo: `paisaje-montanas.jpg`, `gato-naranja.png`

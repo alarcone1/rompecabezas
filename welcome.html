@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+    <link as="style"
+        href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans:wght@400;500;700;900&amp;family=Plus+Jakarta+Sans:wght@400;500;700;800"
+        onload="this.rel='stylesheet'" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <title>Rompecabezas - Bienvenida</title>
+    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon" />
+    
+    <!-- TailwindCSS desde CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Nuestros estilos personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Scripts de JavaScript -->
+    <script src="js/utils.js"></script>
+    <script src="js/main.js"></script>
+</head>
+
+<body class="bg-violet-50 text-gray-800">
+    <div class="relative flex size-full min-h-screen flex-col justify-between group/design-root overflow-x-hidden mobile-container">
+        <main class="flex-grow flex flex-col">
+            <div class="relative bg-gradient-primary pt-20 pb-24 text-white text-center shadow-lg">
+                <div
+                    class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.1%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-20">
+                </div>
+                <div class="absolute top-4 left-4">
+                    <a href="index.html" class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm text-white flex items-center justify-center hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-300 transform hover:scale-105 no-underline">
+                        <span class="material-symbols-outlined text-3xl">arrow_back</span>
+                    </a>
+                </div>
+                <div class="absolute top-4 right-4">
+                    <button class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm text-white flex items-center justify-center hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-300 transform hover:scale-105">
+                        <span class="material-symbols-outlined text-3xl">help</span>
+                    </button>
+                </div>
+                <div class="relative">
+                    <h1 class="text-5xl font-extrabold tracking-tight drop-shadow-md">Jigsaw Joy</h1>
+                    <p class="mt-3 text-lg opacity-90 drop-shadow-sm">Create your masterpiece</p>
+                </div>
+            </div>
+            <div class="flex-grow w-full max-w-md mx-auto px-4 sm:px-6 -mt-16">
+                <div class="space-y-6">
+                    <div
+                        class="rounded-2xl bg-white/70 backdrop-blur-lg p-6 shadow-xl border border-white/30 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                        <div class="flex items-center gap-4 mb-5">
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg">
+                                <span class="material-symbols-outlined text-white text-4xl">photo_library</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">From Your Photos</h3>
+                        </div>
+                        <a href="setting.html" 
+                            class="flex w-full items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-4 text-lg font-bold text-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-300 transform hover:scale-105 no-underline">
+                            <span>Choose from Gallery</span>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                    </div>
+                    <div class="relative py-2">
+                        <div aria-hidden="true" class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-300/70 border-dashed"></div>
+                        </div>
+                        <div class="relative flex justify-center">
+                            <span
+                                class="bg-violet-50 px-4 text-sm font-semibold text-gray-500 uppercase tracking-wider">OR</span>
+                        </div>
+                    </div>
+                    <div
+                        class="rounded-2xl bg-white/70 backdrop-blur-lg p-6 shadow-xl border border-white/30 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center shadow-lg">
+                                <span class="material-symbols-outlined text-white text-4xl">auto_awesome</span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-800">With Magic AI</h3>
+                                <p class="text-sm text-gray-500 font-medium">Powered by Creative Canvas</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4 mt-5">
+                            <label class="sr-only" for="ai-prompt">AI Prompt</label>
+                            <div class="relative">
+                                <span
+                                    class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-2xl">palette</span>
+                                <input
+                                    class="block w-full rounded-xl border-gray-300/80 shadow-inner focus:border-pink-500 focus:ring-pink-500 sm:text-base h-16 pl-14 pr-4 placeholder:text-gray-400"
+                                    id="ai-prompt" placeholder="e.g., 'a cat wearing a wizard hat'" type="text" />
+                            </div>
+                            <a href="puzzle.html"
+                                class="flex w-full items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-pink-500 to-rose-600 px-4 py-4 text-lg font-bold text-white shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 transition-all duration-300 transform hover:scale-105 no-underline">
+                                <span>Generate Image</span>
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="bg-gradient-primary shadow-[0_-4px_12px_rgba(0,0,0,0.05)] sticky bottom-0">
+            <nav class="mx-auto flex w-full max-w-md items-center justify-evenly px-6 pt-4 pb-4">
+                <a class="flex flex-col items-center gap-2 text-white/70 hover:text-cyan-400 transition-all duration-300 transform hover:scale-110 no-underline min-w-0 flex-1" href="index.html">
+                    <span class="material-symbols-outlined text-3xl transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">home</span>
+                    <span class="text-xs font-bold">Inicio</span>
+                </a>
+                <a class="flex flex-col items-center gap-2 text-white hover:text-cyan-400 transition-all duration-300 transform hover:scale-110 no-underline min-w-0 flex-1" href="welcome.html">
+                    <span class="material-symbols-outlined text-3xl transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">image</span>
+                    <span class="text-xs font-bold">Seleccionar</span>
+                </a>
+                <a class="flex flex-col items-center gap-2 text-white/70 hover:text-cyan-400 transition-all duration-300 transform hover:scale-110 no-underline min-w-0 flex-1" href="setting.html">
+                    <span class="material-symbols-outlined text-3xl transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">settings</span>
+                    <span class="text-xs font-bold">Ajustes</span>
+                </a>
+            </nav>
+        </footer>
+    </div>
+
+</body>
+
+</html>

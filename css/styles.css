@@ -1,0 +1,386 @@
+/* ===================================
+   ROMPECABEZAS - ESTILOS GLOBALES
+   ================================= */
+
+/* Variables CSS - Colores unificados */
+:root {
+  /* Colores principales del juego */
+  --primary-color: #6366F1;     /* Indigo - Color principal */
+  --secondary-color: #EC4899;   /* Rosa - Color secundario */
+  --background-color: #F5F3FF;  /* Fondo claro violeta */
+  
+  /* Colores de estado */
+  --success-color: #10B981;     /* Verde para completado */
+  --warning-color: #F59E0B;     /* Amarillo para alertas */
+  --error-color: #EF4444;       /* Rojo para errores */
+  
+  /* Colores de texto */
+  --text-primary: #1F2937;      /* Texto oscuro principal */
+  --text-secondary: #6B7280;    /* Texto gris secundario */
+  --text-light: #FFFFFF;        /* Texto blanco */
+}
+
+/* Configuración base del body */
+body {
+  font-family: 'Plus Jakarta Sans', 'Noto Sans', sans-serif;
+  min-height: max(884px, 100dvh); /* Altura mínima para móviles */
+  background-color: var(--background-color);
+  color: var(--text-primary);
+}
+
+/* ===================================
+   GRADIENTES REUTILIZABLES
+   ================================= */
+
+.bg-gradient-primary {
+  background-image: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+}
+
+.bg-gradient-puzzle {
+  background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+}
+
+.text-gradient-primary {
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===================================
+   BOTONES ESTANDARIZADOS
+   ================================= */
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #4F46E5; /* Versión más oscura del primary */
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #DB2777; /* Versión más oscura del secondary */
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4);
+}
+
+/* ===================================
+   UTILIDADES DE COLORES
+   ================================= */
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+.border-primary {
+  border-color: var(--primary-color);
+}
+
+.ring-primary {
+  --tw-ring-color: var(--primary-color);
+}
+
+.ring-secondary {
+  --tw-ring-color: var(--secondary-color);
+}
+
+/* Focus states para accesibilidad */
+.focus\:border-primary:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(99 102 241 / var(--tw-border-opacity));
+}
+
+.focus\:ring-primary:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(99 102 241 / var(--tw-ring-opacity));
+}
+
+/* ===================================
+   UTILIDADES PARA MÓVILES
+   ================================= */
+
+/* Padding seguro para notch de iPhone */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Ocultar scrollbar pero mantener funcionalidad */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ===================================
+   ANIMACIONES ESPECIALES
+   ================================= */
+
+/* Animación de confetti para página de completado */
+@keyframes confetti-fall {
+  0% { 
+    transform: translateY(-10vh) rotate(0deg); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateY(110vh) rotate(720deg); 
+    opacity: 0; 
+  }
+}
+
+.confetti {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  animation: confetti-fall 7s linear infinite;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+/* ===================================
+   COMPONENTES ESPECÍFICOS DEL JUEGO
+   ================================= */
+
+/* Estilo para piezas del rompecabezas */
+.puzzle-piece {
+  cursor: grab;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.puzzle-piece:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.puzzle-piece:active {
+  cursor: grabbing;
+  transform: scale(0.95);
+}
+
+/* Estilo para bloques de piezas unidas */
+.puzzle-block {
+  border: 2px solid var(--success-color);
+  background-color: rgba(16, 185, 129, 0.1);
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   ================================= */
+
+/* Contenedor principal para móviles */
+.mobile-container {
+  max-width: 420px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+/* Adaptaciones para tablets */
+@media (min-width: 768px) {
+  .mobile-container {
+    max-width: 480px;
+  }
+}
+
+/* Adaptaciones para desktop */
+@media (min-width: 1024px) {
+  .mobile-container {
+    max-width: 420px; /* Mantener proporción móvil */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* ========================================
+   PUZZLE GAME - FUNCIONALIDADES AVANZADAS
+   ======================================== */
+
+/* Animación temporal para piezas que se colocan correctamente (1 segundo) */
+.pieza-correcta-anim {
+    border: 3px solid #00FF88 !important;
+    box-shadow: 
+        0 0 15px rgba(0, 255, 136, 0.8),
+        0 0 30px rgba(0, 255, 136, 0.6),
+        inset 0 0 15px rgba(0, 255, 136, 0.3) !important;
+    outline: 2px solid rgba(0, 255, 136, 0.4) !important;
+    outline-offset: 3px !important;
+    animation: pulso-verde 1s ease-in-out;
+}
+
+/* Animación de pulso para la pieza correcta */
+@keyframes pulso-verde {
+    0% {
+        box-shadow: 
+            0 0 15px rgba(0, 255, 136, 0.8),
+            0 0 30px rgba(0, 255, 136, 0.6),
+            inset 0 0 15px rgba(0, 255, 136, 0.3);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 
+            0 0 25px rgba(0, 255, 136, 1),
+            0 0 40px rgba(0, 255, 136, 0.8),
+            inset 0 0 25px rgba(0, 255, 136, 0.4);
+        transform: scale(1.02);
+    }
+    100% {
+        box-shadow: 
+            0 0 15px rgba(0, 255, 136, 0.8),
+            0 0 30px rgba(0, 255, 136, 0.6),
+            inset 0 0 15px rgba(0, 255, 136, 0.3);
+        transform: scale(1);
+    }
+}
+
+/* Estado permanente para piezas fijas (no se pueden mover) */
+.pieza-fija {
+    pointer-events: none !important;
+    border: 2px solid #00DD77 !important;
+    box-shadow: 
+        0 0 10px rgba(0, 221, 119, 0.5),
+        inset 0 0 10px rgba(0, 221, 119, 0.2) !important;
+    background: linear-gradient(145deg, rgba(0, 221, 119, 0.1), rgba(0, 255, 136, 0.05)) !important;
+}
+
+/* Articulación visual - Eliminar borde derecho cuando hay pieza fija a la derecha */
+.pieza-fija.articulada-right {
+    border-right: none !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+/* Articulación visual - Eliminar borde inferior cuando hay pieza fija abajo */
+.pieza-fija.articulada-bottom {
+    border-bottom: none !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+/* Estado final: cuando el rompecabezas está completo */
+.rompecabezas-completo {
+    gap: 0 !important;
+    padding: 0 !important;
+    border-radius: 1rem !important;
+    overflow: hidden !important;
+    box-shadow: 
+        0 0 30px rgba(0, 255, 136, 0.6),
+        0 0 60px rgba(0, 255, 136, 0.4) !important;
+    border: 3px solid #00FF88 !important;
+    background: linear-gradient(145deg, rgba(0, 255, 136, 0.1), rgba(0, 221, 119, 0.1)) !important;
+}
+
+/* Piezas dentro del rompecabezas completo: sin bordes individuales */
+.rompecabezas-completo .puzzle-piece {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+    margin: 0 !important;
+    background: transparent !important;
+}
+
+/* Animación suave para el estado final */
+.rompecabezas-completo {
+    animation: completado-brillo 2s ease-in-out infinite alternate;
+}
+
+@keyframes completado-brillo {
+    0% {
+        box-shadow: 
+            0 0 30px rgba(0, 255, 136, 0.6),
+            0 0 60px rgba(0, 255, 136, 0.4);
+    }
+    100% {
+        box-shadow: 
+            0 0 40px rgba(0, 255, 136, 0.8),
+            0 0 80px rgba(0, 255, 136, 0.6);
+    }
+}
+
+/* Efecto hover deshabilitado para piezas fijas */
+.pieza-fija:hover {
+    transform: none !important;
+    box-shadow: 
+        0 0 10px rgba(0, 221, 119, 0.5),
+        inset 0 0 10px rgba(0, 221, 119, 0.2) !important;
+}
+
+/* Asegurar que las piezas en el estado final mantienen su contenido visible */
+.rompecabezas-completo .puzzle-piece > div {
+    border-radius: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Transiciones suaves para todos los cambios */
+.puzzle-piece {
+    transition: all 0.3s ease !important;
+}
+
+.pieza-fija {
+    transition: border 0.5s ease, box-shadow 0.5s ease !important;
+}
+
+/* ========================================
+   DIFICULTADES MÚLTIPLES - GRIDS ADAPTATIVOS
+   ======================================== */
+
+/* Todas las piezas mantienen aspect-ratio 9:16 */
+.puzzle-piece {
+    aspect-ratio: 9/16 !important;
+}
+
+/* Contenedor adaptativo para diferentes tamaños */
+.puzzle-container {
+    max-width: min(400px, 90vw);
+    margin: 0 auto;
+}
+
+/* Grid específicos para mejor distribución del espacio */
+.grid-cols-4 {
+    gap: 2px;
+}
+
+.grid-cols-5 {
+    gap: 1px;
+}
+
+/* Responsive - ajustar gap en pantallas pequeñas */
+@media (max-width: 380px) {
+    .grid-cols-4 {
+        gap: 1px;
+    }
+    
+    .grid-cols-5 {
+        gap: 1px;
+    }
+}
