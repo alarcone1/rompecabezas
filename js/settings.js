@@ -17,11 +17,11 @@ const DEFAULT_SETTINGS = {
     // Audio y efectos
     soundEnabled: true,
     vibrationEnabled: false, // Por defecto OFF para no molestar
-    
+
     // Dificultad del juego
     difficulty: 'easy', // 'easy', 'medium', 'hard'
     gridSize: 3,        // 3, 4, 5
-    
+
     // Meta-configuraciones
     version: '1.0',
     lastUpdated: null
@@ -36,7 +36,7 @@ const DIFFICULTY_CONFIG = {
     },
     medium: {
         gridSize: 4,
-        name: 'Medio', 
+        name: 'Medio',
         description: '4×4 - 16 piezas'
     },
     hard: {
@@ -57,12 +57,12 @@ function getSettings() {
             console.log('⚙️ No hay configuraciones guardadas, usando defaults');
             return { ...DEFAULT_SETTINGS };
         }
-        
+
         const settings = JSON.parse(stored);
-        
+
         // Merge con defaults para asegurar todas las propiedades
         const mergedSettings = { ...DEFAULT_SETTINGS, ...settings };
-        
+
         console.log('⚙️ Configuraciones cargadas:', mergedSettings);
         return mergedSettings;
     } catch (error) {
@@ -93,15 +93,15 @@ function saveSettings(settings) {
 function updateSetting(key, value) {
     const currentSettings = getSettings();
     currentSettings[key] = value;
-    
+
     // Si se cambia la dificultad, actualizar gridSize
     if (key === 'difficulty' && DIFFICULTY_CONFIG[value]) {
         currentSettings.gridSize = DIFFICULTY_CONFIG[value].gridSize;
     }
-    
+
     saveSettings(currentSettings);
     console.log(`⚙️ Setting actualizado: ${key} = ${value}`);
-    
+
     // Disparar evento personalizado para notificar cambios
     dispatchSettingsChangeEvent(key, value);
 }
@@ -136,14 +136,14 @@ function clearScores() {
         // Limpiar rankings de todas las dificultades
         const difficulties = ['easy', 'medium', 'hard'];
         let clearedCount = 0;
-        
+
         difficulties.forEach(difficulty => {
             const difficultyConfig = {
                 easy: { key: 'puzzleRanking_3x3', name: '3x3' },
                 medium: { key: 'puzzleRanking_4x4', name: '4x4' },
                 hard: { key: 'puzzleRanking_5x5', name: '5x5' }
             };
-            
+
             const key = difficultyConfig[difficulty].key;
             if (localStorage.getItem(key)) {
                 localStorage.removeItem(key);
@@ -151,14 +151,14 @@ function clearScores() {
                 console.log(`🗑️ Rankings eliminados para ${difficultyConfig[difficulty].name}`);
             }
         });
-        
+
         // También limpiar el ranking legacy por si existe
         if (localStorage.getItem('puzzleRanking')) {
             localStorage.removeItem('puzzleRanking');
             clearedCount++;
             console.log('🗑️ Ranking legacy eliminado');
         }
-        
+
         console.log(`✅ Total: ${clearedCount} rankings eliminados`);
         return true;
     } catch (error) {
@@ -174,10 +174,10 @@ function resetAllData() {
     try {
         // Eliminar configuraciones
         localStorage.removeItem(SETTINGS_STORAGE_KEY);
-        
+
         // Eliminar puntuaciones
         localStorage.removeItem('puzzleRanking');
-        
+
         // Eliminar cualquier otro dato relacionado
         const keys = Object.keys(localStorage);
         keys.forEach(key => {
@@ -185,7 +185,7 @@ function resetAllData() {
                 localStorage.removeItem(key);
             }
         });
-        
+
         console.log('🧹 Todos los datos eliminados');
         return true;
     } catch (error) {
@@ -199,18 +199,18 @@ function resetAllData() {
  */
 function initializeSettingsPage() {
     console.log('⚙️ Inicializando página de configuraciones...');
-    
+
     const currentSettings = getSettings();
-    
+
     // Configurar toggles de audio
     setupAudioToggles(currentSettings);
-    
+
     // Configurar selector de dificultad
     setupDifficultySelector(currentSettings);
-    
+
     // Configurar botones de datos
     setupDataButtons();
-    
+
     console.log('✅ Página de configuraciones inicializada');
 }
 
@@ -228,7 +228,7 @@ function setupAudioToggles(settings) {
             console.log(`🔊 Sonidos ${e.target.checked ? 'activados' : 'desactivados'}`);
         });
     }
-    
+
     // Toggle de vibración (segundo checkbox)
     const vibrationToggle = document.querySelectorAll('input[type="checkbox"]')[1];
     if (vibrationToggle) {
@@ -246,11 +246,11 @@ function setupAudioToggles(settings) {
  */
 function setupDifficultySelector(settings) {
     const difficultyRadios = document.querySelectorAll('input[name="difficulty"]');
-    
+
     difficultyRadios.forEach(radio => {
         // Establecer estado inicial
         radio.checked = radio.value === settings.difficulty;
-        
+
         // Agregar evento de cambio
         radio.addEventListener('change', (e) => {
             if (e.target.checked) {
@@ -266,10 +266,10 @@ function setupDifficultySelector(settings) {
  */
 function setupDataButtons() {
     const buttons = document.querySelectorAll('button');
-    
+
     buttons.forEach(button => {
         const buttonText = button.textContent.trim();
-        
+
         if (buttonText.includes('Borrar Puntuaciones')) {
             button.addEventListener('click', handleClearScores);
         } else if (buttonText.includes('Reiniciar Todo')) {
@@ -282,52 +282,63 @@ function setupDataButtons() {
  * Manejar borrado de puntuaciones
  */
 function handleClearScores() {
-    const confirmed = confirm(
-        '¿Estás seguro de que quieres borrar todas tus puntuaciones?\n\n' +
-        'Esta acción no se puede deshacer.'
+    ModalSystem.showConfirm(
+        '¿Borrar Puntuaciones?',
+        '¿Estás seguro de que quieres borrar todas tus puntuaciones?\n\nEsta acción no se puede deshacer.',
+        () => {
+            // Acción confirmar
+            const success = clearScores();
+            if (success) {
+                ModalSystem.showAlert('¡Hecho!', 'Puntuaciones eliminadas correctamente.', 'check_circle');
+            } else {
+                ModalSystem.showAlert('Error', 'No se pudieron eliminar las puntuaciones.', 'error');
+            }
+        },
+        null, // Cancel callback
+        'Sí, borrar',
+        'Cancelar'
     );
-    
-    if (confirmed) {
-        const success = clearScores();
-        if (success) {
-            alert('✅ Puntuaciones eliminadas correctamente.');
-        } else {
-            alert('❌ Error al eliminar puntuaciones. Inténtalo de nuevo.');
-        }
-    }
 }
 
 /**
  * Manejar reseteo completo
  */
 function handleResetAll() {
-    const confirmed = confirm(
-        '⚠️ ATENCIÓN: Esto eliminará TODOS tus datos:\n\n' +
-        '• Todas las puntuaciones\n' +
-        '• Todas las configuraciones\n' +
-        '• Todo progreso guardado\n\n' +
-        '¿Estás completamente seguro?'
+    ModalSystem.showConfirm(
+        '⚠️ ATENCIÓN',
+        'Esto invoca un RESET COMPLETO:\n\n• Todas las puntuaciones\n• Todas las configuraciones\n• Todo progreso guardado\n\n¿Estás completamente seguro?',
+        () => {
+            // Primera confirmación aceptada, pedir segunda
+            setTimeout(() => {
+                ModalSystem.showConfirm(
+                    '🚨 ÚLTIMA ADVERTENCIA',
+                    'Esta acción es IRREVERSIBLE.\n¿Realmente quieres continuar y borrar todo?',
+                    () => {
+                        // Segunda confirmación aceptada
+                        const success = resetAllData();
+                        if (success) {
+                            ModalSystem.showAlert(
+                                'Reseteo Completo',
+                                'Todos los datos han sido eliminados.\n\nLa página se recargará.',
+                                'rocket_launch',
+                                () => {
+                                    window.location.reload();
+                                }
+                            );
+                        } else {
+                            ModalSystem.showAlert('Error', 'No se pudo resetear la aplicación.', 'error');
+                        }
+                    },
+                    null,
+                    'BORRAR TODO',
+                    'Cancelar'
+                );
+            }, 300); // Pequeño delay para suavidad
+        },
+        null,
+        'Continuar',
+        'Cancelar'
     );
-    
-    if (confirmed) {
-        const doubleConfirm = confirm(
-            '🚨 ÚLTIMA ADVERTENCIA 🚨\n\n' +
-            'Esta acción es IRREVERSIBLE.\n' +
-            '¿Realmente quieres continuar?'
-        );
-        
-        if (doubleConfirm) {
-            const success = resetAllData();
-            if (success) {
-                alert('✅ Todos los datos han sido eliminados.\n\nLa página se recargará.');
-                setTimeout(() => {
-                    window.location.reload();
-                }, 1000);
-            } else {
-                alert('❌ Error al resetear datos. Inténtalo de nuevo.');
-            }
-        }
-    }
 }
 
 /**
@@ -338,7 +349,7 @@ function playSound(soundName) {
     if (!settings.soundEnabled) {
         return; // Sonidos desactivados
     }
-    
+
     // TODO: Implementar reproducción de sonidos reales
     console.log(`🔊 Reproduciendo sonido: ${soundName}`);
 }
@@ -351,7 +362,7 @@ function vibrate(pattern = [100]) {
     if (!settings.vibrationEnabled) {
         return; // Vibración desactivada
     }
-    
+
     if (navigator.vibrate) {
         navigator.vibrate(pattern);
         console.log(`📳 Vibración activada: ${pattern}`);
@@ -361,7 +372,7 @@ function vibrate(pattern = [100]) {
 /**
  * Inicialización automática cuando se carga la página
  */
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Solo inicializar si estamos en la página de settings
     if (document.querySelector('h1')?.textContent?.includes('Configuración')) {
         initializeSettingsPage();
@@ -376,15 +387,15 @@ window.GameSettings = {
     getSettings,
     updateSetting,
     getCurrentDifficultyConfig,
-    
+
     // Gestión de datos
     clearScores,
     resetAllData,
-    
+
     // Utilidades
     playSound,
     vibrate,
-    
+
     // Configuraciones
     DIFFICULTY_CONFIG,
     DEFAULT_SETTINGS

@@ -11,13 +11,13 @@
     <title>Rompecabezas - Ranking</title>
     <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    
+
     <!-- TailwindCSS desde CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    
+
     <!-- Nuestros estilos personalizados -->
     <link rel="stylesheet" href="css/styles.css">
-    
+
     <!-- Scripts de JavaScript -->
     <script src="js/utils.js"></script>
     <script src="js/main.js"></script>
@@ -25,14 +25,17 @@
 </head>
 
 <body class="bg-violet-50 text-gray-800">
-    <div class="relative flex size-full min-h-screen flex-col justify-between group/design-root overflow-x-hidden mobile-container">
+    <div
+        class="relative flex size-full min-h-screen flex-col justify-between group/design-root overflow-x-hidden mobile-container">
         <main class="flex-grow flex flex-col">
             <!-- Header con gradiente -->
             <div class="relative bg-gradient-primary pt-20 pb-24 text-white text-center shadow-lg">
-                <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.1%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-20">
+                <div
+                    class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.1%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-20">
                 </div>
                 <div class="absolute top-4 left-4">
-                    <a href="index.html" class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm text-white flex items-center justify-center hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-300 transform hover:scale-105 no-underline">
+                    <a href="index.html"
+                        class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm text-white flex items-center justify-center hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-300 transform hover:scale-105 no-underline">
                         <span class="material-symbols-outlined text-3xl">arrow_back</span>
                     </a>
                 </div>
@@ -41,28 +44,32 @@
                     <p class="mt-3 text-lg opacity-90 drop-shadow-sm">Mejores puntuaciones</p>
                 </div>
             </div>
-            
+
             <!-- Contenido principal -->
             <div class="flex-grow w-full max-w-md mx-auto px-4 sm:px-6 -mt-12">
                 <div class="space-y-6">
-                    
+
                     <!-- Selector de dificultad -->
                     <div class="rounded-2xl bg-white/70 backdrop-blur-lg p-6 shadow-xl border border-white/30">
                         <div class="flex items-center gap-4 mb-4">
-                            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">
                                 <span class="material-symbols-outlined text-white text-2xl">tune</span>
                             </div>
                             <h3 class="text-xl font-bold text-gray-800">Dificultad</h3>
                         </div>
-                        
+
                         <div class="flex rounded-xl bg-gray-100 p-1">
-                            <button class="flex-1 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-2 px-4 font-bold shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-300 transform hover:scale-105">
+                            <button id="btn-easy"
+                                class="flex-1 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-2 px-4 font-bold shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-300 transform hover:scale-105">
                                 Fácil (3×3)
                             </button>
-                            <button class="flex-1 rounded-lg text-gray-600 py-2 px-4 font-medium hover:bg-white hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-300 transform hover:scale-105">
+                            <button id="btn-medium"
+                                class="flex-1 rounded-lg text-gray-600 py-2 px-4 font-medium hover:bg-white hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-300 transform hover:scale-105">
                                 Medio (4×4)
                             </button>
-                            <button class="flex-1 rounded-lg text-gray-600 py-2 px-4 font-medium hover:bg-white hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-300 transform hover:scale-105">
+                            <button id="btn-hard"
+                                class="flex-1 rounded-lg text-gray-600 py-2 px-4 font-medium hover:bg-white hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-300 transform hover:scale-105">
                                 Difícil (5×5)
                             </button>
                         </div>
@@ -71,12 +78,13 @@
                     <!-- Lista de rankings -->
                     <div class="rounded-2xl bg-white/70 backdrop-blur-lg p-6 shadow-xl border border-white/30">
                         <div class="flex items-center gap-4 mb-6">
-                            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-yellow-500 to-orange-600 flex items-center justify-center shadow-lg">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-gradient-to-br from-yellow-500 to-orange-600 flex items-center justify-center shadow-lg">
                                 <span class="material-symbols-outlined text-white text-2xl">emoji_events</span>
                             </div>
                             <h3 class="text-xl font-bold text-gray-800">Top 5</h3>
                         </div>
-                        
+
                         <!-- Contenedor dinámico para rankings -->
                         <div id="ranking-list" class="space-y-4">
                             <!-- Los puntajes se cargarán dinámicamente aquí -->
@@ -88,7 +96,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </main>
@@ -96,16 +104,28 @@
         <!-- Footer de navegación -->
         <footer class="bg-gradient-primary shadow-[0_-4px_12px_rgba(0,0,0,0.05)] sticky bottom-0">
             <nav class="mx-auto flex w-full max-w-md items-center justify-evenly px-6 pt-4 pb-4">
-                <a class="flex flex-col items-center gap-2 text-white/70 hover:text-cyan-400 transition-all duration-300 transform hover:scale-110 no-underline min-w-0 flex-1" href="index.html">
-                    <span class="material-symbols-outlined text-3xl transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">home</span>
+                <a class="flex flex-col items-center gap-2 text-white/70 hover:text-cyan-400 transition-all duration-300 transform hover:scale-110 no-underline min-w-0 flex-1"
+                    href="index.html">
+                    <span
+                        class="material-symbols-outlined text-3xl transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">home</span>
                     <span class="text-xs font-bold">Inicio</span>
                 </a>
-                <a class="flex flex-col items-center gap-2 text-white/70 hover:text-cyan-400 transition-all duration-300 transform hover:scale-110 no-underline min-w-0 flex-1" href="puzzle.html">
-                    <span class="material-symbols-outlined text-3xl transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">extension</span>
-                    <span class="text-xs font-bold">Juego</span>
+                <a class="flex flex-col items-center gap-2 text-white/70 hover:text-cyan-400 transition-all duration-300 transform hover:scale-110 no-underline min-w-0 flex-1"
+                    href="welcome.html">
+                    <span
+                        class="material-symbols-outlined text-3xl transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">extension</span>
+                    <span class="text-xs font-bold">Jugar</span>
                 </a>
-                <a class="flex flex-col items-center gap-2 text-white hover:text-cyan-400 transition-all duration-300 transform hover:scale-110 no-underline min-w-0 flex-1" href="setting.html">
-                    <span class="material-symbols-outlined text-3xl transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">settings</span>
+                <a class="flex flex-col items-center gap-2 text-white hover:text-cyan-400 transition-all duration-300 transform hover:scale-110 no-underline min-w-0 flex-1"
+                    href="ranking.html">
+                    <span
+                        class="material-symbols-outlined text-3xl transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">emoji_events</span>
+                    <span class="text-xs font-bold">Ranking</span>
+                </a>
+                <a class="flex flex-col items-center gap-2 text-white/70 hover:text-cyan-400 transition-all duration-300 transform hover:scale-110 no-underline min-w-0 flex-1"
+                    href="setting.html">
+                    <span
+                        class="material-symbols-outlined text-3xl transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">settings</span>
                     <span class="text-xs font-bold">Ajustes</span>
                 </a>
             </nav>
@@ -116,17 +136,58 @@
         /**
          * Script para cargar y mostrar dinámicamente los rankings
          */
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             console.log('📊 Cargando página de rankings...');
-            loadRankings();
+
+            // Configurar botones de dificultad
+            setupDifficultyButtons();
+
+            // Cargar ranking inicial (Fácil por defecto)
+            loadRankings('easy');
         });
+
+        // Configuración de botones
+        const buttons = {
+            easy: document.getElementById('btn-easy'),
+            medium: document.getElementById('btn-medium'),
+            hard: document.getElementById('btn-hard')
+        };
+
+        function setupDifficultyButtons() {
+            // Asignar listeners
+            if (buttons.easy) buttons.easy.onclick = () => loadRankings('easy');
+            if (buttons.medium) buttons.medium.onclick = () => loadRankings('medium');
+            if (buttons.hard) buttons.hard.onclick = () => loadRankings('hard');
+        }
+
+        /**
+         * Actualizar estilos visuales de los botones
+         */
+        function updateActiveButton(activeDifficulty) {
+            const activeClass = 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-md hover:shadow-lg';
+            const inactiveClass = 'text-gray-600 hover:bg-white hover:text-indigo-600';
+
+            // Resetear todos
+            Object.values(buttons).forEach(btn => {
+                if (!btn) return;
+                btn.className = `flex-1 rounded-lg py-2 px-4 font-bold transition-all duration-300 transform hover:scale-105 focus:outline-none ${inactiveClass}`;
+            });
+
+            // Activar el seleccionado
+            const activeBtn = buttons[activeDifficulty];
+            if (activeBtn) {
+                activeBtn.className = `flex-1 rounded-lg py-2 px-4 font-bold transition-all duration-300 transform hover:scale-105 focus:outline-none ${activeClass}`;
+            }
+        }
 
         /**
          * Cargar y mostrar los rankings en la interfaz
          */
-        function loadRankings() {
+        function loadRankings(difficulty = 'easy') {
+            updateActiveButton(difficulty);
+
             const rankingContainer = document.getElementById('ranking-list');
-            
+
             if (!rankingContainer) {
                 console.error('❌ No se encontró el contenedor de rankings');
                 return;
@@ -140,16 +201,33 @@
             }
 
             try {
-                const rankingData = window.RankingSystem.getFormattedRankingData();
-                console.log(`📊 Cargados ${rankingData.length} puntajes para mostrar`);
+                // Usamos la función getRankingScores del sistema para obtener raw data
+                // O mejor, si RankingSystem tuviera un método 'getFormatted' que acepte dificultad.
+                // Como getFormattedRankingData usa getRankingScores sin params (o con params),
+                // verificamos la firma en ranking.js. 
+                // Revisando el código: getFormattedRankingData() llama a getRankingScores() SIN argumentos.
+                // Necesitamos modificar getFormattedRankingData en ranking.js o hacerlo manualmente aquí.
 
-                if (rankingData.length === 0) {
+                // Vamos a obtener los puntajes crudos pasando la dificultad
+                const scores = window.RankingSystem.getRankingScores(difficulty);
+                console.log(`📊 Cargados ${scores.length} puntajes para ${difficulty}`);
+
+                if (scores.length === 0) {
                     showEmptyRanking();
                     return;
                 }
 
+                // Formatear localmente ya que la función del sistema usa la dificultad "actual" del juego
+                const formattedData = scores.map((score, index) => ({
+                    position: index + 1,
+                    moves: score.moves,
+                    timeString: score.timeString,
+                    date: score.date,
+                    isPodium: index < 3
+                }));
+
                 // Generar HTML para cada puntaje
-                const rankingHTML = rankingData.map(score => createRankingItemHTML(score)).join('');
+                const rankingHTML = formattedData.map(score => createRankingItemHTML(score)).join('');
                 rankingContainer.innerHTML = rankingHTML;
 
                 console.log('✅ Rankings cargados correctamente');
@@ -165,58 +243,58 @@
          */
         function createRankingItemHTML(score) {
             const { position, moves, timeString, date, isPodium } = score;
-            
+
             // Determinar emoji y estilos según posición
             let emoji, containerClass, textClass;
-            
+
             if (position === 1) {
                 emoji = '🥇';
                 containerClass = 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-white shadow-lg';
                 textClass = 'text-yellow-100';
             } else if (position === 2) {
                 emoji = '🥈';
-                containerClass = 'bg-white border border-gray-200';
+                containerClass = 'bg-white border border-gray-200 shadow-sm';
                 textClass = 'text-gray-600';
             } else if (position === 3) {
                 emoji = '🥉';
-                containerClass = 'bg-white border border-gray-200';
+                containerClass = 'bg-white border border-gray-200 shadow-sm';
                 textClass = 'text-gray-600';
             } else {
                 emoji = position;
-                containerClass = 'bg-gray-50';
+                containerClass = 'bg-gray-50 border border-gray-100';
                 textClass = 'text-gray-500';
             }
 
             // HTML diferenciado para podium vs otros
             if (isPodium) {
                 return `
-                    <div class="flex items-center gap-4 p-4 rounded-xl ${containerClass}">
-                        <div class="w-12 h-12 rounded-full ${position === 1 ? 'bg-white/20' : position === 2 ? 'bg-gray-200' : 'bg-orange-200'} flex items-center justify-center font-bold text-xl">
+                    <div class="flex items-center gap-4 p-4 rounded-xl ${containerClass} transform transition-all hover:scale-[1.02]">
+                        <div class="w-12 h-12 rounded-full ${position === 1 ? 'bg-white/20' : position === 2 ? 'bg-gray-200' : 'bg-orange-200'} flex items-center justify-center font-bold text-xl shadow-inner">
                             ${emoji}
                         </div>
                         <div class="flex-1">
                             <p class="font-bold ${position === 1 ? 'text-lg text-white' : 'text-gray-800'}">
-                                ${position === 1 ? 'Récord Actual' : 'Tu Puntaje'}
+                                ${position === 1 ? 'Récord Actual' : 'Puntaje Top'}
                             </p>
-                            <p class="${textClass}">${moves} movimientos</p>
+                            <p class="${textClass} font-medium">${moves} movimientos</p>
                         </div>
                         <div class="text-right">
-                            <p class="font-bold ${position === 1 ? 'text-white' : 'text-gray-800'}">${timeString}</p>
-                            <p class="text-xs ${textClass}">tiempo</p>
+                            <p class="font-bold ${position === 1 ? 'text-white' : 'text-gray-800'} text-lg">${timeString}</p>
+                            <p class="text-xs ${textClass} opacity-80">tiempo</p>
                         </div>
                     </div>
                 `;
             } else {
                 return `
                     <div class="flex items-center gap-4 p-3 rounded-xl ${containerClass}">
-                        <div class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center font-bold">
+                        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center font-bold text-gray-500 shadow-sm border border-gray-200">
                             ${emoji}
                         </div>
                         <div class="flex-1">
-                            <p class="font-medium text-gray-700">Tu Puntaje</p>
+                            <p class="font-medium text-gray-700">Puntaje</p>
                             <p class="text-sm ${textClass}">${moves} movimientos</p>
                         </div>
-                        <p class="font-medium text-gray-700">${timeString}</p>
+                        <p class="font-medium text-gray-700 font-mono">${timeString}</p>
                     </div>
                 `;
             }
@@ -228,16 +306,16 @@
         function showEmptyRanking() {
             const rankingContainer = document.getElementById('ranking-list');
             rankingContainer.innerHTML = `
-                <div class="flex items-center justify-center py-12">
-                    <div class="text-center text-gray-500">
-                        <span class="material-symbols-outlined text-6xl mb-4 block">emoji_events</span>
-                        <h3 class="text-xl font-bold text-gray-700 mb-2">¡Aún no hay récords!</h3>
-                        <p class="text-gray-600 mb-4">Sé el primero en completar un puzzle</p>
-                        <a href="puzzle.html" class="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-3 rounded-xl font-bold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                            <span class="material-symbols-outlined">extension</span>
-                            <span>Jugar Ahora</span>
-                        </a>
+                <div class="flex flex-col items-center justify-center py-12 animate-fade-in">
+                    <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-4 inner-shadow">
+                        <span class="material-symbols-outlined text-4xl text-gray-400">emoji_events</span>
                     </div>
+                    <h3 class="text-xl font-bold text-gray-700 mb-2">¡Aún no hay récords!</h3>
+                    <p class="text-gray-500 mb-6 text-center max-w-xs">Sé el primero en completar un puzzle en esta dificultad.</p>
+                    <a href="puzzle.html" class="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-3 rounded-xl font-bold hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95">
+                        <span class="material-symbols-outlined">play_arrow</span>
+                        <span>Jugar Ahora</span>
+                    </a>
                 </div>
             `;
         }
@@ -252,9 +330,6 @@
                     <div class="text-center text-red-500">
                         <span class="material-symbols-outlined text-4xl mb-2 block">error</span>
                         <p>Error al cargar rankings</p>
-                        <button onclick="loadRankings()" class="mt-4 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors">
-                            Reintentar
-                        </button>
                     </div>
                 </div>
             `;
